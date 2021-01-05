@@ -18,7 +18,6 @@ public class CustomTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE = 0.9F;
     @Override
     public void transformPage(View view, float position) {
-        Log.e("TAG","position = "+position);
         if(position < -1){
             view.setScaleY(MIN_SCALE);
         }else if(position <= 1){
