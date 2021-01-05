@@ -1,74 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context="cn.cqs.demo.MainActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:text="普通ViewPager"/>
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:clipChildren="false"
-        android:background="@android:color/darker_gray">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:text="普通ViewPager"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipChildren="false"
+            android:background="@android:color/darker_gray">
 
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp" />
+
+            <cn.cqs.indicator.UIndicator
+                android:id="@+id/indicator1"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="10dp"
+                app:circle_circle_radius="3dp"
+                app:normal_color="#99ffffff"
+                app:selected_color="#ffffff"
+                app:spacing="10dp"
+                app:style="circle_circle" />
+        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textColor="@android:color/black"
+            android:text="阿里开源UltraViewPager"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@android:color/darker_gray">
+
+            <com.tmall.ultraviewpager.UltraViewPager
+                android:id="@+id/ultra_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:upv_autoscroll="3000"
+                app:upv_infiniteloop="true" />
+
+            <cn.cqs.indicator.UIndicator
+                android:id="@+id/indicator2"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="10dp"
+                app:circle_rect_corner="3dp"
+                app:circle_rect_itemHeight="4dp"
+                app:circle_rect_itemWidth="20dp"
+                app:circle_rect_radius="3dp"
+                app:normal_color="#99ffffff"
+                app:selected_color="#ffffff"
+                app:spacing="10dp"
+                app:style="circle_rect" />
+        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textColor="@android:color/black"
+            android:text="CardView带阴影ViewPager"/>
         <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
+            android:id="@+id/shadow_viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp" />
+            android:layout_height="260dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp" />
+    </LinearLayout>
 
-        <cn.cqs.indicator.UIndicator
-            android:id="@+id/indicator1"
-            android:layout_width="match_parent"
-            android:layout_height="6dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="10dp"
-            app:circle_circle_radius="3dp"
-            app:normal_color="#99ffffff"
-            app:selected_color="#ffffff"
-            app:spacing="10dp"
-            app:style="circle_circle" />
-    </FrameLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:textColor="@android:color/black"
-        android:text="阿里开源UltraViewPager"/>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@android:color/darker_gray">
-
-        <com.tmall.ultraviewpager.UltraViewPager
-            android:id="@+id/ultra_viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:upv_autoscroll="3000"
-            app:upv_infiniteloop="true" />
-
-        <cn.cqs.indicator.UIndicator
-            android:id="@+id/indicator2"
-            android:layout_width="match_parent"
-            android:layout_height="6dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="10dp"
-            app:circle_rect_corner="3dp"
-            app:circle_rect_itemHeight="4dp"
-            app:circle_rect_itemWidth="20dp"
-            app:circle_rect_radius="3dp"
-            app:normal_color="#99ffffff"
-            app:selected_color="#ffffff"
-            app:spacing="10dp"
-            app:style="circle_rect" />
-    </FrameLayout>
-</LinearLayout>
+</ScrollView>

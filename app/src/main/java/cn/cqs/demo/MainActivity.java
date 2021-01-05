@@ -18,6 +18,8 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.cqs.cardview.ShadowAdapterImpl;
+import cn.cqs.cardview.ShadowTransformer;
 import cn.cqs.indicator.UIndicator;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     UltraViewPager ultraViewPager;
     @BindView(R.id.indicator2)
     UIndicator indicator2;
+    //带阴影的ViewPager
+    @BindView(R.id.shadow_viewPager)
+    ViewPager shadowViewPager;
 
 
     @Override
@@ -54,6 +59,25 @@ public class MainActivity extends AppCompatActivity {
 //        ultraViewPager.setItemRatio(1.0f);
 //        ultraViewPager.setAutoMeasureHeight(true);
         ultraViewPager.setPageTransformer(false, new UltraScaleTransformer());
+
+        ShadowAdapterImpl shadowAdapter = new ShadowAdapterImpl<String>() {
+            @Override
+            public int getLayoutId() {
+                return R.layout.layout_cardview_item;
+            }
+
+            @Override
+            public void bindView(String item, View view) {
+
+            }
+        };
+        shadowAdapter.addCardItem("");
+        shadowAdapter.addCardItem("");
+        shadowAdapter.addCardItem("");
+        shadowAdapter.addCardItem("");
+        ShadowTransformer mCardShadowTransformer = new ShadowTransformer(shadowViewPager, shadowAdapter);
+        shadowViewPager.setAdapter(shadowAdapter);
+        shadowViewPager.setPageTransformer(false, mCardShadowTransformer);
     }
     public List<View> getList() {
         List<View> list = new ArrayList<>();
