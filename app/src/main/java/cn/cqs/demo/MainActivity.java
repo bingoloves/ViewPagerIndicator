@@ -60,22 +60,6 @@ public class MainActivity extends AppCompatActivity {
 //        ultraViewPager.setItemRatio(1.0f);
 //        ultraViewPager.setAutoMeasureHeight(true);
         ultraViewPager.setPageTransformer(false, new UltraScaleTransformer());
-        ultraViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                Log.e("TAG","position = "+i);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
 
         ShadowAdapterImpl shadowAdapter = new ShadowAdapterImpl<String>(getShadowList(),true) {
             @Override
@@ -90,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         shadowAdapter.attachToViewPager(shadowViewPager);
+        shadowAdapter.setAutoScroll(3000);
     }
     public List<String> getShadowList(){
         List<String> list = new ArrayList<>();
