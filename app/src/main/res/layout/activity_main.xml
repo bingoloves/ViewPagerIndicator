@@ -84,11 +84,11 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/shadow_viewPager"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="300dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingLeft="60dp"
-            android:paddingRight="60dp" />
+            android:paddingRight="60dp"/>
     </LinearLayout>
 
 </ScrollView>

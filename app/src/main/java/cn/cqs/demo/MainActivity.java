@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.tmall.ultraviewpager.UltraViewPager;
 import com.tmall.ultraviewpager.transformer.UltraDepthScaleTransformer;
@@ -59,8 +60,24 @@ public class MainActivity extends AppCompatActivity {
 //        ultraViewPager.setItemRatio(1.0f);
 //        ultraViewPager.setAutoMeasureHeight(true);
         ultraViewPager.setPageTransformer(false, new UltraScaleTransformer());
+        ultraViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
 
-        ShadowAdapterImpl shadowAdapter = new ShadowAdapterImpl<String>() {
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                Log.e("TAG","position = "+i);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+        ShadowAdapterImpl shadowAdapter = new ShadowAdapterImpl<String>(getShadowList(),true) {
             @Override
             public int getLayoutId() {
                 return R.layout.layout_cardview_item;
@@ -68,16 +85,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void bindView(String item, View view) {
-
+                Button btn = view.findViewById(R.id.btn_card);
+                btn.setText(item);
             }
         };
-        shadowAdapter.addCardItem("");
-        shadowAdapter.addCardItem("");
-        shadowAdapter.addCardItem("");
-        shadowAdapter.addCardItem("");
-        ShadowTransformer mCardShadowTransformer = new ShadowTransformer(shadowViewPager, shadowAdapter);
-        shadowViewPager.setAdapter(shadowAdapter);
-        shadowViewPager.setPageTransformer(false, mCardShadowTransformer);
+        shadowAdapter.attachToViewPager(shadowViewPager);
+    }
+    public List<String> getShadowList(){
+        List<String> list = new ArrayList<>();
+        for (int i = 0;i<10;i++){
+            list.add("卡片："+i);
+        }
+        return list;
     }
     public List<View> getList() {
         List<View> list = new ArrayList<>();
