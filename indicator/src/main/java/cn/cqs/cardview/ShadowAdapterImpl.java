@@ -96,7 +96,9 @@ public abstract class ShadowAdapterImpl<T> extends PagerAdapter implements IShad
                 if (mBaseElevation == 0) {
                     mBaseElevation = cardView.getCardElevation();
                 }
-                cardView.setMaxCardElevation(mBaseElevation * MAX_ELEVATION_FACTOR);
+                Log.e("TAG","mBaseElevation = "+mBaseElevation);
+                //默认CardView mBaseElevation CardView间距可以根据实际情况调整
+                //cardView.setMaxCardElevation(mBaseElevation * MAX_ELEVATION_FACTOR);
             }
             mViews.put(position, view);
         }
